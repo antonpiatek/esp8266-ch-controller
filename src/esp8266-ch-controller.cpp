@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include "config.h"
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
@@ -53,6 +54,16 @@ String topic2_pub;
 String topic1_sub;
 String topic2_sub;
 String willTopic;
+
+void setRelay1(boolean state);
+void setRelay2(boolean state);
+void checkComms();
+void logRelay(int id, bool state);
+void _setRelayN(int pin, bool state);
+void _setLedN(int pin, bool state);
+bool setTarget(char state, char relay);
+void log(String l);
+void callback(char* topic, byte* payload, unsigned int length);
 
 void setup() {
   setRelay1(false);
